@@ -8,7 +8,7 @@ $(document).ready(function () {
       lineNumbers: true,
       styleActiveLine: true,
       textWrapping: true,
-      mode: "javascript"
+      mode: "javascript",
     }).on('change', editor => {
       const code = editor.getValue()
       const highlightedCode = hljs.highlightAuto(code)
