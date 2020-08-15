@@ -1,0 +1,19 @@
+<extends src="../layouts/layout.html">
+    <block name="head">
+        <title>
+            Medium Code Highlight
+        </title>
+        <meta name="description" content="Add highlighted code to Medium articles. An alternative to Github gist embed and carbon screenshots.">
+    </block>
+    <block name="contents">
+        <textarea placeholder="Write or paste your code here..." class="text-md" id="textarea-code" cols="30" rows="10"></textarea>
+        <br>
+        <div id="output" style="display: none;">
+            <p class="text-center text-md text-muted">
+                Select and copy code from below and paste it inside your Medium Story.
+            </p>
+            <pre id="output-code"></pre>
+        </div>
+    </block>
+</extends>
+

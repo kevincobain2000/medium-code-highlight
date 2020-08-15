@@ -1,0 +1,436 @@
+@import '~jquery-modal/jquery.modal.min.css';
+@import '~highlight.js/styles/default.css';
+@import 'grid.scss';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Make default font-size 1rem and add smooth scrolling to anchors */
+html {
+  font-size: 1rem;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Roboto", "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  line-height: 1.8;
+
+  max-width: 80ch;
+  min-height: 100vh;
+  overflow-x: hidden;
+  margin: 0 auto;
+  padding: 2rem 1.25rem;
+
+  counter-reset: theorem;
+  counter-reset: definition;
+  counter-reset: sidenote-counter;
+
+  color: hsl(0, 5%, 10%);
+  background-color: hsl(210, 20%, 98%);
+
+  text-rendering: optimizeLegibility;
+}
+
+/* Justify and hyphenate all paragraphs */
+p {
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  margin-top: 1rem;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make links red */
+a,
+a:visited {
+  color: #a00;
+}
+
+a:focus {
+  outline-offset: 2px;
+  outline: 2px solid hsl(220, 90%, 52%);
+}
+
+/* Make images easier to work with */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Prevent textarea from overflowing */
+textarea {
+  width: 100%;
+}
+
+/* Natural flow and rhythm in articles by default */
+article > * + * {
+  margin-top: 1em;
+}
+
+/* Styles for inline code or code snippets */
+code,
+pre,
+kbd {
+  font-family: Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
+    monospace;
+  font-size: 85%;
+}
+pre {
+  padding: 1rem 1.4rem;
+  max-width: 100%;
+  overflow: auto;
+  border-radius: 4px;
+  background: hsl(210, 28%, 93%);
+}
+pre code {
+  font-size: 95%;
+  position: relative;
+}
+kbd {
+  background: hsl(210, 5%, 100%);
+  border: 1px solid hsl(210, 5%, 70%);
+  border-radius: 2px;
+  padding: 2px 4px;
+  font-size: 75%;
+}
+
+/* Better tables */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: auto;
+  max-width: 100%;
+  border-top: 2.27px solid black;
+  border-bottom: 2.27px solid black;
+  /* display: block; */
+  overflow-x: auto; /* does not work because element is not block */
+  /* white-space: nowrap; */
+  counter-increment: caption;
+}
+/* add bottom border on column table headings  */
+table tr > th[scope='col'] {
+  border-bottom: 1.36px solid black;
+}
+/* add right border on row table headings  */
+table tr > th[scope='row'] {
+  border-right: 1.36px solid black;
+}
+table > tbody > tr:first-child > td,
+table > tbody > tr:first-child > th {
+  border-top: 1.36px solid black;
+}
+table > tbody > tr:last-child > td,
+table > tbody > tr:last-child > th {
+  border-bottom: 1.36px solid black;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 0.5rem;
+  line-height: 1.1;
+}
+/* Table caption */
+caption {
+  text-align: left;
+  font-size: 0.923em;
+  /* border-bottom: 2pt solid #000; */
+  padding: 0 0.25em 0.25em;
+  width: 100%;
+  margin-left: 0;
+}
+
+caption::before {
+  content: 'Table ' counter(caption) '. ';
+  font-weight: bold;
+}
+
+/* allow scroll on the x-axis */
+.scroll-wrapper {
+  overflow-x: auto;
+}
+
+/* if a table is wrapped in a scroll wrapper,
+  the table cells shouldn't wrap */
+.scroll-wrapper > table td {
+  white-space: nowrap;
+}
+
+/* Center align the title */
+h1:first-child {
+  text-align: center;
+}
+
+/* Nested ordered list for ToC */
+nav ol {
+  counter-reset: item;
+  padding-left: 2rem;
+}
+nav li {
+  display: block;
+}
+nav li:before {
+  content: counters(item, '.') ' ';
+  counter-increment: item;
+  padding-right: 0.85rem;
+}
+
+/* Center definitions (most useful for display equations) */
+dl dd {
+  text-align: center;
+}
+
+
+
+/* Heading typography */
+h1 {
+  font-size: 2.5rem;
+  line-height: 3.25rem;
+  margin-bottom: 1.625rem;
+}
+
+h2 {
+  font-size: 1.7rem;
+  line-height: 2rem;
+  margin-top: 3rem;
+}
+
+h3 {
+  font-size: 1.4rem;
+  margin-top: 2.5rem;
+}
+
+h4 {
+  font-size: 1.2rem;
+  margin-top: 2rem;
+}
+
+h5 {
+  font-size: 1rem;
+  margin-top: 1.8rem;
+}
+
+h6 {
+  font-size: 1rem;
+  font-style: italic;
+  font-weight: normal;
+  margin-top: 2.5rem;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.625rem;
+}
+
+h1 + h2 {
+  margin-top: 1.625rem;
+}
+
+h2 + h3,
+h3 + h4,
+h4 + h5 {
+  margin-top: 0.8rem;
+}
+
+h5 + h6 {
+  margin-top: -0.8rem;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: 0.8rem;
+}
+
+header {
+    min-height: 200px;
+}
+.text-center {
+    text-align: center;
+}
+a, a:visited {
+    color: #6060d6;
+    text-decoration: none;;
+}
+a:hover{
+    text-decoration: underline;
+}
+
+h1.no-print {
+    font-size: 1.5rem;
+}
+.font-web {
+    font-family: sans-serif;
+}
+.text-sm {
+    font-size: 0.65rem;;
+}
+.text-md {
+    font-size: 0.85rem;;
+}
+.text-muted {
+    color:gray;
+}
+.text-black {
+    color: black;
+}
+.modal {
+    max-width: 70%;
+}
+.shadow-sm {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+}
+textarea {
+    border: 1px solid #edcaca;
+    outline: none;
+}
+
+.btn {
+	-moz-appearance: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-webkit-appearance: none;
+	-webkit-user-select: none;
+	appearance: none;
+	background-position: -1px -1px;
+	background-repeat: repeat-x;
+	background-size: 110% 110%;
+	border: 1px solid rgba(27, 31, 35, .2);
+	border-radius: .25em;
+	cursor: pointer;
+	display: inline-block;
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 20px;
+	padding: 6px 12px;
+	position: relative;
+	user-select: none;
+	vertical-align: middle;
+	white-space: nowrap;
+}
+
+.btn:hover {
+	background-repeat: repeat-x;
+	text-decoration: none;
+}
+
+.btn:focus {
+	outline: 0;
+}
+
+.btn:disabled {
+	background-position: 0 0;
+	cursor: default;
+}
+
+.btn:active {
+	background-image: none;
+}
+
+.btn {
+	background-color: #eff3f6;
+	background-image: linear-gradient(-180deg, #fafbfc, #eff3f6 90%);
+	color: #24292e;
+}
+
+.btn:focus {
+	box-shadow: 0 0 0 .2em rgba(3, 102, 214, .3);
+}
+
+.btn:hover {
+	background-color: #e6ebf1;
+	background-image: linear-gradient(-180deg, #f0f3f6, #e6ebf1 90%);
+	background-position: -.5em;
+	border-color: rgba(27, 31, 35, .35);
+}
+
+.btn:active {
+	background-color: #e9ecef;
+	background-image: none;
+	border-color: rgba(27, 31, 35, .35);
+	box-shadow: inset 0 .15em .3em rgba(27, 31, 35, .15);
+}
+
+.btn:disabled {
+	background-color: #eff3f6;
+	background-image: none;
+	border-color: rgba(27, 31, 35, .2);
+	box-shadow: none;
+	color: rgba(36, 41, 46, .4);
+}
+
+.btn-primary {
+	background-color: #28a745;
+	background-image: linear-gradient(-180deg, #34d058, #28a745 90%);
+	color: #fff;
+}
+
+.btn-primary:focus {
+	box-shadow: 0 0 0 .2em rgba(52, 208, 88, .4);
+}
+
+.btn-primary:hover {
+	background-color: #269f42;
+	background-image: linear-gradient(-180deg, #2fcb53, #269f42 90%);
+	background-position: -.5em;
+	border-color: rgba(27, 31, 35, .5);
+}
+
+.btn-primary:active {
+	background-color: #279f43;
+	background-image: none;
+	border-color: rgba(27, 31, 35, .5);
+	box-shadow: inset 0 .15em .3em rgba(27, 31, 35, .15);
+}
+
+.btn-primary:disabled {
+	background-color: #94d3a2;
+	background-image: none;
+	border-color: rgba(27, 31, 35, .2);
+	box-shadow: none;
+	color: hsla(0, 0%, 100%, .75);
+}
+
+.btn-sm {
+	font-size: 12px;
+	line-height: 20px;
+	padding: 3px 10px;
+}
