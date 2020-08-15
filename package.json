@@ -9,6 +9,7 @@
     "watch": "npm run css -- --watch"
   },
   "dependencies": {
+    "codemirror": "^5.56.0",
     "cross-env": "^7.0.2",
     "filename-regex": "^2.0.1",
     "highlight.js": "^10.1.2",

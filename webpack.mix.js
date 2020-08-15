@@ -22,6 +22,8 @@ mix
     // Basic Jquery and Jquery plugins
     './node_modules/jquery/dist/jquery.min.js',
     './node_modules/jquery-modal/jquery.modal.min.js',
+    './node_modules/codemirror/lib/codemirror.js',
+    './node_modules/codemirror/mode/javascript/javascript.js',
   ],'docs/js/lib.js')
   .js([
     './src/js/app.js',
