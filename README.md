@@ -1,4 +1,4 @@
-## Online Writer
+## Online Editor
 
 https://kevincobain2000.github.io/medium-code-highlight/
 
