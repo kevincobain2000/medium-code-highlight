@@ -5,6 +5,7 @@ $(document).ready(function () {
     let editor = CodeMirror.fromTextArea($("#textarea-code")[0], {
       height: "70px",
       width: "100%",
+      theme: "ambiance",
       lineNumbers: true,
       styleActiveLine: true,
       textWrapping: true,

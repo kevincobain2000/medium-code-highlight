@@ -1,7 +1,7 @@
 @import '~jquery-modal/jquery.modal.min.css';
 @import '~highlight.js/styles/default.css';
 @import '~codemirror/lib/codemirror.css';
-@import '~codemirror/theme/dracula.css';
+@import '~codemirror/theme/ambiance.css';
 @import 'grid.scss';
 
 *,
@@ -435,4 +435,7 @@ textarea {
 	font-size: 12px;
 	line-height: 20px;
 	padding: 3px 10px;
+}
+.CodeMirror {
+  font-family: 'Inconsolata', monospace;
 }
